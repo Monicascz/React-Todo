@@ -13,7 +13,7 @@ import React from 'react';
 
 import TodoList from './components/TodoList'
 import TodoForm from './components/TodoForm'
-
+import './components/Todo.css'
 
 const needTodo = [
   {
@@ -47,6 +47,7 @@ class App extends React.Component {
 
   toggleItem = (clickedItemId) =>{
     const newTodo = this.state.needTodo.map((item)=>{
+      
         if(item.id === clickedItemId){
           return {
             ...item,
@@ -61,32 +62,35 @@ class App extends React.Component {
       })
   } // end toggleItem
 
-  addItem = (name ,item) => {
-    console.log(item)
+  addItem = (name, item) => {
     this.setState({
       needTodo: [...this.state.needTodo, {name: item , id: Math.floor(Math.random()*100), completed: false }]
     })
   }
 
-  // handleClear = () => {
-  //   const newTaskList = this.state.task.filter((t)=>{
-  //     return !t.completed;
-  //   });
-  //   this.setState({
-  //     task:newTaskList,
-  //   });
-  // }
-
+ handleClear=()=>{
+   //filter method //pull whatever has completed: true out, or only keep what is completed:false
+   
+   const updatedList= this.state.needTodo.filter((todo)=>{
+     console.log("Todo", todo)
+     return !todo.completed;
+   })
+   this.setState({
+     
+     needTodo: updatedList
+   })
+ }
+ 
 
 
   render() {
-    console.log('App State needTodo', this.state.needTodo)
+  
     return (
       <div className="App">
         <h2>Welcome to your Todo App!</h2>
         <TodoList needTodo={this.state.needTodo} toggleItem={this.toggleItem}/>
         <TodoForm addItem={this.addItem} />
-        
+        <button onClick={this.handleClear}>Clear Completed Tasks</button>
       </div>
     );
   }

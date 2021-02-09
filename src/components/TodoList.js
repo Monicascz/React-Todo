@@ -8,7 +8,6 @@ import Todo from './Todo'
 
 export default function TodoList(props) {
     const { needTodo, toggleItem } =props
-    console.log("todoItem", props.needTodo)
     return (
         
         <div>
