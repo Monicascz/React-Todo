@@ -16,7 +16,7 @@ class TodoForm extends React.Component{
     handleSubmit = (evt) =>{
             //how do we set the state of state held on a different file?
             evt.preventDefault();
-            this.props.addItem(this.state.newTodoName);
+            this.props.addItem(this.name, this.state.newTodoName);
             
     }
 

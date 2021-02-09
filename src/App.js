@@ -61,10 +61,10 @@ class App extends React.Component {
       })
   } // end toggleItem
 
-  addItem = (item) => {
-    console.log(item);
+  addItem = (name ,item) => {
+    console.log(item)
     this.setState({
-      needTodo: [...this.state.needTodo, item]
+      needTodo: [...this.state.needTodo, {name: item , id: Math.floor(Math.random()*100), completed: false }]
     })
   }
 
@@ -80,6 +80,7 @@ class App extends React.Component {
 
 
   render() {
+    console.log('App State needTodo', this.state.needTodo)
     return (
       <div className="App">
         <h2>Welcome to your Todo App!</h2>

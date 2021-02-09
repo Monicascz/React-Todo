@@ -7,12 +7,14 @@ import React from 'react'
 import Todo from './Todo'
 
 export default function TodoList(props) {
-    console.log("props", props);
+    const { needTodo, toggleItem } =props
+    console.log("todoItem", props.needTodo)
     return (
+        
         <div>
             <h1>Here is what you need to get done: </h1>
-            {props.needTodo.map((todoItem)=>(
-                <Todo key={todoItem.id} todoItem={todoItem} toggleItem={props.toggleItem}/>
+            {needTodo.map((todoItem)=>(
+                <Todo key={todoItem.id} todoItem={todoItem} toggleItem={toggleItem}/>
                 )  
             )}
         </div>
